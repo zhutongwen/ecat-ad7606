@@ -157,6 +157,16 @@
           <WinNumber>1</WinNumber>
           <ItemText>ad7606_value</ItemText>
         </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>CpuID</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Lock_Code</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>

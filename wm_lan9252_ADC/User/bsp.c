@@ -366,24 +366,43 @@ void Ad7606Init(void)
 //	101表示32倍过采样， 也就是硬件内部采集32个样本求平均
 //	110表示64倍过采样， 也就是硬件内部采集64个样本求平均
 	ADC_OS0 = 0;
-	ADC_OS1 = 0;
+	ADC_OS1 = 1;
 	ADC_OS2 = 1;
-	ADC_REST = 1;
+	ADC_REST = 0;
 	{
 		static u32 i = 0;
-		while(i++ < 0xfffff);
+		while(i++ < 0x2fffff);
 		i=0;
 		ADC_REST = i;
 		ADC_REST = 0;
-		while(i++ < 0xfffff);
+		while(i++ < 0x2fffff);
 	}
 	ADC_CONVERT = 1;
 	Spi1Init();
+	
+	{
+		static u32 CpuID[3];
+		static u32 addr_h = 0x1f007a00;
+		static u32 addr_l = 0x00ff0010;
+		{
+		 //??CPU??ID
+		 CpuID[0]=*(vu32*)(addr_h + addr_l + 0x00);
+		 CpuID[1]=*(vu32*)(addr_h + addr_l + 0x04);
+		 CpuID[2]=*(vu32*)(addr_h + addr_l + 0x08);
+		}
+		
+		if(	CpuID[0] == 0x002A0036 &&
+			CpuID[1] == 0x32334713 &&
+			CpuID[2] == 0x38323431)
+		{
+			
+		}
+		else
+		{
+			while(1);
+		}
+	}
 }
-
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*********************************************************************************************************

@@ -3,9 +3,9 @@
 <title>Static Call Graph - [STM32F40_41xxx\STM32F40_41xxx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image STM32F40_41xxx\STM32F40_41xxx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Jan 03 11:28:29 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sat Jan 06 10:10:25 2018
 <BR><P>
-<H3>Maximum Stack Usage =        312 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        304 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; MainLoop &rArr; ECAT_Main &rArr; MBX_Main &rArr; MailboxServiceInd &rArr; COE_ServiceInd &rArr; SDOS_SdoInd &rArr; SdoRes &rArr; MBX_MailboxSendReq &rArr; MBX_CopyToSendMailbox &rArr; HW_EscRead &rArr; PMPReadDRegister &rArr; PMPReadPDRamRegister &rArr; PMPWriteDWord
 <P>
@@ -1322,7 +1322,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ad7606Init
 </UL>
 
-<P><STRONG><a name="[9b]"></a>Ad7606Init</STRONG> (Thumb, 184 bytes, Stack size 16 bytes, bsp.o(.text))
+<P><STRONG><a name="[9b]"></a>Ad7606Init</STRONG> (Thumb, 340 bytes, Stack size 16 bytes, bsp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = Ad7606Init &rArr; Spi1Init &rArr; GPIO_PinAFConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi1Init
@@ -1332,7 +1332,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_Init
 </UL>
 
-<P><STRONG><a name="[9c]"></a>Tim2Init</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, bsp.o(.text), UNUSED)
+<P><STRONG><a name="[9c]"></a>Tim2Init</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, bsp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
@@ -1414,7 +1414,7 @@ Global Symbols
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_Init
 </UL>
 
-<P><STRONG><a name="[aa]"></a>PMPReadRegUsingCSR</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, bsp.o(.text))
+<P><STRONG><a name="[aa]"></a>PMPReadRegUsingCSR</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, bsp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = PMPReadRegUsingCSR &rArr; PMPWriteDWord
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PMPWriteDWord
@@ -1432,7 +1432,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PMPWriteRegister
 </UL>
 
-<P><STRONG><a name="[ae]"></a>PMPReadPDRamRegister</STRONG> (Thumb, 304 bytes, Stack size 40 bytes, bsp.o(.text))
+<P><STRONG><a name="[ae]"></a>PMPReadPDRamRegister</STRONG> (Thumb, 276 bytes, Stack size 40 bytes, bsp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = PMPReadPDRamRegister &rArr; PMPWriteDWord
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PMPWriteDWord
@@ -1660,7 +1660,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PDO_OutputMapping
 </UL>
 
-<P><STRONG><a name="[da]"></a>APPL_Application</STRONG> (Thumb, 384 bytes, Stack size 0 bytes, stm32f405appl.o(.text))
+<P><STRONG><a name="[da]"></a>APPL_Application</STRONG> (Thumb, 450 bytes, Stack size 0 bytes, stm32f405appl.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ECAT_Application
 </UL>
 
@@ -1671,8 +1671,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> stm32f405appl.o(.data)
 </UL>
-<P><STRONG><a name="[5d]"></a>main</STRONG> (Thumb, 270 bytes, Stack size 8 bytes, stm32f405appl.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = main &rArr; MainLoop &rArr; ECAT_Main &rArr; MBX_Main &rArr; MailboxServiceInd &rArr; COE_ServiceInd &rArr; SDOS_SdoInd &rArr; SdoRes &rArr; MBX_MailboxSendReq &rArr; MBX_CopyToSendMailbox &rArr; HW_EscRead &rArr; PMPReadDRegister &rArr; PMPReadPDRamRegister &rArr; PMPWriteDWord
+<P><STRONG><a name="[5d]"></a>main</STRONG> (Thumb, 418 bytes, Stack size 0 bytes, stm32f405appl.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = main &rArr; MainLoop &rArr; ECAT_Main &rArr; MBX_Main &rArr; MailboxServiceInd &rArr; COE_ServiceInd &rArr; SDOS_SdoInd &rArr; SdoRes &rArr; MBX_MailboxSendReq &rArr; MBX_CopyToSendMailbox &rArr; HW_EscRead &rArr; PMPReadDRegister &rArr; PMPReadPDRamRegister &rArr; PMPWriteDWord
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MainLoop

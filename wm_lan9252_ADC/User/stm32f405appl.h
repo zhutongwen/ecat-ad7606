@@ -103,8 +103,7 @@ TOBJ1C13;
 /** \brief 0x6000 (Digital input object) data structure*/
 typedef struct OBJ_STRUCT_PACKED_START {
    UINT16   u16SubIndex0; /**< \brief SubIndex 0*/
-   UINT8	keys;		 /**< \brief Switchs*/
-   ALIGN8(SubIndex002) /**< \brief 8Bit alignment*/
+   UINT16	keys;		 /**< \brief Switchs*/
 } OBJ_STRUCT_PACKED_END
 TOBJ6000;
 
@@ -123,8 +122,7 @@ TOBJ6020;
 /** \brief 0x7000 (Digital output object) data structure*/
 typedef struct OBJ_STRUCT_PACKED_START {
    UINT16   u16SubIndex0; 	/**< \brief SubIndex 0*/
-   UINT8    leds; 			/**< \brief LEDs*/
-   ALIGN8(SubIndex008) /**< \brief 8Bit alignment*/
+   UINT16    leds; 			/**< \brief LEDs*/
 } OBJ_STRUCT_PACKED_END
 TOBJ7000;
 /** @}*/
@@ -229,7 +227,7 @@ OBJCONST UCHAR OBJMEM aName0x1601[] = "DO RxPDO-Map\000\377";
  */
 PROTO TOBJ1601 sDORxPDOMap
 #ifdef _EVALBOARD_
- = {9, {0x70000101, 0x70000201, 0x70000301, 0x70000401,0x70000501, 0x70000601, 0x70000701, 0x70000801, 0x08}}
+ = {1, {0x70000110}}
 #endif
 ;
 /** @}*/
@@ -334,7 +332,7 @@ OBJCONST UCHAR OBJMEM aName0x1A00[] = "DI TxPDO-Map\000\377";
  */
 PROTO TOBJ1A00 sDITxPDOMap
 #ifdef _EVALBOARD_
- = {9, {0x60000101, 0x60000201, 0x60000301, 0x60000401,0x60000501, 0x60000601, 0x60000701, 0x60000801, 0x08}}
+ = {1, 0x60000110}
 #endif
 ;
 
@@ -445,9 +443,9 @@ PROTO TOBJ1C13 sTxPDOassign
  *  (x > 0)
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6000[] = {
-   {DEFTYPE_UNSIGNED8, 0x8, ACCESS_READ }, /* Subindex 000 */
-   {DEFTYPE_UNSIGNED8, 0x8, ACCESS_READ | OBJACCESS_TXPDOMAPPING}, /* SubIndex 001: Switchs */
-   {0x0000, 0x8, 0}}; /* Subindex 009 for align */
+   {DEFTYPE_UNSIGNED8,  0x8,  ACCESS_READ }, /* Subindex 000 */
+   {DEFTYPE_UNSIGNED16, 0x16, ACCESS_READ | OBJACCESS_TXPDOMAPPING}, /* SubIndex 001: Switchs */
+   {DEFTYPE_UNSIGNED16, 0x16, ACCESS_READ | OBJACCESS_TXPDOMAPPING}}; /* Subindex 009 for align */
 
 /**
  * \brief 0x6000 (Digital input object) object and entry names
@@ -464,7 +462,7 @@ OBJCONST UCHAR OBJMEM aName0x6000[] = "DI Inputs\000Switchs\000\000\377";
  */
 PROTO TOBJ6000 sDIInputs
 #ifdef _EVALBOARD_
-= {1, 0x00, 0}
+= {1, 0x00}
 #endif
 ;
 
@@ -512,9 +510,9 @@ PROTO TOBJ6020 sAIInputs
 */
 #ifdef _EVALBOARD_
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x7000[] = {
-   {DEFTYPE_UNSIGNED8, 0x8, ACCESS_READ }, /* Subindex 000 */
-   {DEFTYPE_UNSIGNED8, 0x8, ACCESS_READ | OBJACCESS_RXPDOMAPPING}, /* SubIndex 001: LEDs */
-   {DEFTYPE_UNSIGNED8, 0x8, 0}}; /* Subindex 008 for align */
+   {DEFTYPE_UNSIGNED8,  0x8,  ACCESS_READ }, /* Subindex 000 */
+   {DEFTYPE_UNSIGNED16, 0x10, ACCESS_READ | OBJACCESS_RXPDOMAPPING}, /* SubIndex 001: LEDs */
+   {DEFTYPE_UNSIGNED16, 0x10, ACCESS_READ | OBJACCESS_RXPDOMAPPING}}; /* Subindex 008 for align */
 
 
 /**
@@ -530,7 +528,7 @@ OBJCONST UCHAR OBJMEM aName0x7000[] = "DO Outputs\000LEDs\000\000\377";
  */
 PROTO TOBJ7000 sDOOutputs
 #ifdef _EVALBOARD_
-= {1, 0x00, 0}
+= {1, 0x00}
 #endif
 ;
 /** @}*/

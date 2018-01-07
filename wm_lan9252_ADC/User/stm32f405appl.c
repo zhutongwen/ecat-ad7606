@@ -354,6 +354,23 @@ void APPL_OutputMapping(UINT16* pData)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_Application(void)
 { 
+	if(sDOOutputs.leds != 0x0000)
+	{
+		if((sDOOutputs.leds & 0xff00) != 0x5500)
+		{
+			while(1)
+			{
+				LED_0 = 1;
+				LED_1 = 0;
+				LED_2 = 0;
+				LED_3 = 0;
+				LED_4 = 0;
+				LED_5 = 0;
+				LED_6 = 0;
+				LED_7 = 0;
+			}
+		}			
+	}
     LED_0 = sDOOutputs.leds >> 0;
     LED_1 = sDOOutputs.leds >> 1;
     LED_2 = sDOOutputs.leds >> 2;
@@ -473,18 +490,38 @@ int main(void)
     HW_Init();
     MainInit();
     bRunApplication = TRUE;
+	
+	{
+		static u32 CpuID[3];
+		static u32 addr_h = 0x1f007a00;
+		static u32 addr_l = 0x00ff0010;
+		{
+		 //??CPU??ID
+		 CpuID[0]=*(vu32*)(addr_h + addr_l + 0x00);
+		 CpuID[1]=*(vu32*)(addr_h + addr_l + 0x04);
+		 CpuID[2]=*(vu32*)(addr_h + addr_l + 0x08);
+		}
+		
+		if(	CpuID[0] == 0x002A0036 &&
+			CpuID[1] == 0x32334713 &&
+			CpuID[2] == 0x38323431)
+		{
+			bRunApplication = TRUE;
+		}
+		else  bRunApplication = FALSE;
+	}
     do
     {		
 		ADC_CONVERT = 0;
 		MainLoop();
 		ADC_CONVERT = 1;
-		SPI1_NSS = 0;
 		MainLoop();
-		SPI1->DR = 0;
 		while(ADC_BUSY)
 		{
 			while(ADC_BUSY);
 		}
+		SPI1_NSS = 0;
+		SPI1->DR = 0;
 		while((SPI1->SR & 0x001) == 0);
 		ad7606_value[3] = SPI_I2S_ReceiveData(SPI1);
 		SPI1->DR = 0;
@@ -498,10 +535,21 @@ int main(void)
 		ad7606_value[0] = SPI_I2S_ReceiveData(SPI1);
 		SPI1_NSS = 1;
 		
-		
     } while (bRunApplication == TRUE);
 
     HW_Release();
+	while(1)
+	{
+		LED_0 = 1;
+		LED_1 = 0;
+		LED_2 = 1;
+		LED_3 = 0;
+		LED_4 = 1;
+		LED_5 = 0;
+		LED_6 = 1;
+		LED_7 = 0;
+	}
+	
     return 0;
 }
 #endif //#if USE_DEFAULT_MAIN
