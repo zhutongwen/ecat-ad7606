@@ -846,7 +846,7 @@
               </DataType>
               <DataType>
                 <Name>DT6000</Name>
-                <BitSize>24</BitSize>
+                <BitSize>32</BitSize>
                 <SubItem>
                   <SubIdx>0</SubIdx>
                   <Name>SubIndex 000</Name>
@@ -860,9 +860,9 @@
                 </SubItem>
                 <SubItem>
                   <SubIdx>1</SubIdx>
-                  <Name>Switch0_1</Name>
-                  <Type>USINT</Type>
-                  <BitSize>8</BitSize>
+                  <Name>Switch0_15</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
                   <BitOffs>16</BitOffs>
                   <Flags>
                     <Access>ro</Access>
@@ -936,7 +936,7 @@
               </DataType>
               <DataType>
                 <Name>DT7000</Name>
-                <BitSize>24</BitSize>
+                <BitSize>32</BitSize>
                 <SubItem>
                   <SubIdx>0</SubIdx>
                   <Name>SubIndex 000</Name>
@@ -950,9 +950,9 @@
                 </SubItem>
                 <SubItem>
                   <SubIdx>1</SubIdx>
-                  <Name>LED0_8</Name>
-                  <Type>USINT</Type>
-                  <BitSize>8</BitSize>
+                  <Name>LED0_16</Name>
+                  <Type>UINT</Type>
+                  <BitSize>16</BitSize>
                   <BitOffs>16</BitOffs>
                   <Flags>
                     <Access>rw</Access>
@@ -1584,7 +1584,7 @@
                 <Index>#x6000</Index>
                 <Name>DI Inputs</Name>
                 <Type>DT6000</Type>
-                <BitSize>24</BitSize>
+                <BitSize>32</BitSize>
                 <Info>
                   <SubItem>
                     <Name>SubIndex 000</Name>
@@ -1593,7 +1593,7 @@
                     </Info>
                   </SubItem>
                   <SubItem>
-                    <Name>Switch0_1</Name>
+                    <Name>Switch0_15</Name>
                     <Info>
                       <DefaultData>00</DefaultData>
                     </Info>
@@ -1618,7 +1618,7 @@
                 <Index>#x7000</Index>
                 <Name>DO Outputs</Name>
                 <Type>DT7000</Type>
-                <BitSize>24</BitSize>
+                <BitSize>32</BitSize>
                 <Info>
                   <SubItem>
                     <Name>SubIndex 000</Name>
@@ -1627,7 +1627,7 @@
                     </Info>
                   </SubItem>
                   <SubItem>
-                    <Name>LED0_8</Name>
+                    <Name>LED0_16</Name>
                     <Info>
                       <DefaultData>00</DefaultData>
                     </Info>
@@ -1654,14 +1654,9 @@
           <Entry>
             <Index>#x7000</Index>
             <SubIndex>1</SubIndex>
-            <BitLen>8</BitLen>
-            <Name>LED0_7</Name>
-            <DataType>USINT</DataType>
-          </Entry>
-          <Entry>
-            <Index>#x0</Index>
-            <SubIndex>0</SubIndex>
-            <BitLen>8</BitLen>
+            <BitLen>16</BitLen>
+            <Name>LED0_15</Name>
+            <DataType>UINT</DataType>
           </Entry>
         </RxPdo>
         <TxPdo Mandatory="true" Fixed="true" Sm="3">
@@ -1702,14 +1697,9 @@
           <Entry>
             <Index>#x6000</Index>
             <SubIndex>1</SubIndex>
-            <BitLen>8</BitLen>
-            <Name>Switch0_1</Name>
-            <DataType>USINT</DataType>
-          </Entry>
-          <Entry>
-            <Index>#x0</Index>
-            <SubIndex>0</SubIndex>
-            <BitLen>8</BitLen>
+            <BitLen>16</BitLen>
+            <Name>Switch0_15</Name>
+            <DataType>UINT</DataType>
           </Entry>
         </TxPdo>
         <Mailbox DataLinkLayer="true">
